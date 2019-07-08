@@ -1,46 +1,67 @@
 package com.epam.brest2019.courses;
 
+import com.epam.brest2019.courses.files.CSVFileReader;
+import com.epam.brest2019.courses.menu.CorrectValue;
+import com.epam.brest2019.courses.menu.EnteredValue;
+import com.epam.brest2019.courses.menu.ExitValue;
+import com.epam.brest2019.courses.menu.IncorrectValue;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
 
+    private static final String QUIT_SYMBOL = "q";
+
     public static void main(String[] args) throws IOException {
 
-        CostCount cost = new CostCount();
-        System.out.println(cost.getCost());
+        Main main = new Main();
+        Scanner scanner = new Scanner(System.in);
 
+        CSVFileReader fileReader = new CSVFileReader();
+        Map<Integer, BigDecimal> distancePrices = fileReader.readData("../../resources/price_per_km.csv");
+        if(distancePrices == null || distancePrices.isEmpty()){
+            throw new FileNotFoundException("File with kg per km not found.");
+        }
 
+        EnteredValue weightValue = receiveValueFromConsole("Enter distance in km or 'q' for quit", scanner);
+        if(weightValue.getType() != EnteredValue.Types.EXIT){
+            CorrectValue correctValue = (CorrectValue) weightValue;
+            System.out.println("Value: " + correctValue.getValue());
+        }
 
+        System.out.println("Bye");
 
-//        BigDecimal weight;
-//        BigDecimal distance;
-//
-//        BigDecimal pricePerKg = new BigDecimal("30");
-//        BigDecimal pricePerKm = new BigDecimal("50");
-//
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Enter the weight in kilograms or 'q' for quit: ");
-//        String inputString = scanner.nextLine();
-//        if (!inputString.equals("Q")) {
-//            weight = new BigDecimal(inputString);
-//        } else {
-//            System.out.println("\nBye!");
-//            return;
-//        }
-//
-//        System.out.println("Enter the distance in kilometers or 'q' for quit: ");
-//        inputString = scanner.nextLine();
-//        if (!inputString.equals("Q")) {
-//            distance = new BigDecimal(inputString);
-//        } else {
-//            System.out.println("\nBye!");
-//            return;
-//        }
-//
-//        System.out.println("Value of weight = " + weight);
-//        System.out.println("Value of distance = " + distance);
-//
-//        BigDecimal price = weight.multiply(pricePerKg).add(distance.multiply(pricePerKm));
-//        System.out.println("Price = " + price);
+    }
+
+    private static EnteredValue receiveValueFromConsole(String message, Scanner scanner){
+        EnteredValue enteredValue = new IncorrectValue();
+        while(enteredValue.getType() == EnteredValue.Types.INCORRECT){
+            System.out.println(message);
+            enteredValue = parseInputValue(scanner.nextLine());
+        }
+        return enteredValue;
+    }
+
+    private static EnteredValue parseInputValue(String inputValue){
+        EnteredValue result = new ExitValue();
+        if(!inputValue.trim().toLowerCase().equals(QUIT_SYMBOL)){
+            try{
+                BigDecimal value = new BigDecimal(inputValue);
+                if(value.compareTo(BigDecimal.ZERO) > 0){
+                    result = new CorrectValue(new BigDecimal(inputValue));
+                } else{
+                    throw new IllegalArgumentException();
+                }
+
+            } catch (IllegalArgumentException e){
+                System.out.format("Incorrect value: %s%n", inputValue);
+                result = new IncorrectValue();
+            }
+        }
+        return result;
     }
 }

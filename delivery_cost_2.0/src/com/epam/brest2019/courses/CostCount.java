@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class CostCount {
     private Scanner scanner;
     private Properties properties;
+    BigDecimal compareDistance = new BigDecimal("100");
 
     public CostCount() throws IOException {
         this.scanner = new Scanner(System.in);
@@ -18,6 +19,8 @@ public class CostCount {
         FileInputStream fileInputStream = new FileInputStream("resources/cost.properties");
         BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
         properties.load(bufferedInputStream);
+        bufferedInputStream.close();
+        fileInputStream.close();
     }
 
     public String getCost(){
@@ -52,9 +55,8 @@ public class CostCount {
 
     private String sum(BigDecimal weight, BigDecimal distance){
         BigDecimal pricePerKm;
-        BigDecimal pricePerKg = new BigDecimal(10);
-        BigDecimal result;
-        if(distance.compareTo(new BigDecimal(100)) == 1){
+        BigDecimal pricePerKg = new BigDecimal("10");
+        if(distance.compareTo(compareDistance) == 1){
             pricePerKm = new BigDecimal(Integer.parseInt(properties.getProperty("lessThan100")));
         } else{
             pricePerKm = new BigDecimal(Integer.parseInt(properties.getProperty("moreThan100")));
