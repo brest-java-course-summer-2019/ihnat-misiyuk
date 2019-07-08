@@ -1,6 +1,4 @@
-package com.epam.brest2019.car_repair
-
--resources;
+package com.epam.brest2019.car_repair;
 
 import static org.junit.Assert.assertTrue;
 

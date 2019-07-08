@@ -1,4 +1,4 @@
-package com.epam.brest2019.car_repair-resources;
+package com.epam.brest2019.car_repair;
 
 /**
  * Hello world!
