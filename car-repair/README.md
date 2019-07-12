@@ -5,10 +5,8 @@
 ##  Prerequisites ##
 jdk11<br/>
 maven3+<br/>
-###  Installing ###
----
+##  Installing ##
 > mvn clean install
-###  Running with tests ###
----
+##  Running with tests ##
 > mvn clean test
 
