@@ -6,7 +6,9 @@
 jdk11<br/>
 maven3+<br/>
 ###  Installing ###
+---
 > mvn clean install
 ###  Running with tests ###
+---
 > mvn clean test
 
