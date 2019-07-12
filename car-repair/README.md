@@ -9,4 +9,3 @@ maven3+<br/>
 > mvn clean install
 ##  Running with tests ##
 > mvn clean test
-
