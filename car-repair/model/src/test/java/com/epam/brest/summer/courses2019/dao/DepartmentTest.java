@@ -1,4 +1,4 @@
-package com.epam.brest.summer.courses2019.model;
+package com.epam.brest.summer.courses2019.dao;
 
 import org.junit.Assert;
 import org.junit.Test;
