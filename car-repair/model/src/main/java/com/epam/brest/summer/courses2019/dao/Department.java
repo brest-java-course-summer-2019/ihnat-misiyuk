@@ -1,11 +1,10 @@
-package com.epam.brest.summer.courses2019.model;
+package com.epam.brest.summer.courses2019.dao;
 
 import java.math.BigDecimal;
 
 /**
  * POJO Department for model.
  */
-
 public class Department {
 
     /**
@@ -22,6 +21,21 @@ public class Department {
      * Average salary of the Department.
      */
     private BigDecimal avgSalary;
+
+    /**
+     * Constructor without arguments.
+     */
+    public Department() {
+    }
+
+    /**
+     * Constructor with department name.
+     *
+     * @param departmentName department name
+     */
+    public Department(String departmentName) {
+        this.departmentName = departmentName;
+    }
 
     /**
      * Returns <code>Integer</code> representation of this departmentId.
