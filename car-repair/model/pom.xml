@@ -10,7 +10,7 @@
     <parent>
         <groupId>com.epam.brest.summer.courses2019</groupId>
         <artifactId>car-repair</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>

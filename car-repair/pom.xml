@@ -7,7 +7,15 @@
   <groupId>com.epam.brest.summer.courses2019</groupId>
   <artifactId>car-repair</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.1.8.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+    <packaging>pom</packaging>
 
   <name>Car Repair</name>
   <!-- FIXME change it to the project's website -->
