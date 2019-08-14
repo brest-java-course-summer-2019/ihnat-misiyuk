@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <name>Car Repair Test DB Module</name>
+    <name>Car Repair Web</name>
 
     <artifactId>web-app</artifactId>
 

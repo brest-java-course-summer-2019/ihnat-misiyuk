@@ -1,9 +1,10 @@
 package com.epam.brest.summer.courses2019.service;
 
-import com.epam.brest.summer.courses2019.model.Department;
 import com.epam.brest.summer.courses2019.dao.DepartmentDao;
+import com.epam.brest.summer.courses2019.model.Department;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  *  Department Service Interface implementation.
  */
+@Component
 @Transactional
 public class DepartmentServiceImpl implements DepartmentService {
 
