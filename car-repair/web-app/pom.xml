@@ -14,7 +14,7 @@
     <parent>
         <artifactId>car-repair</artifactId>
         <groupId>com.epam.brest.summer.courses2019</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
