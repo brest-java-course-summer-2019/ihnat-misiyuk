@@ -26,11 +26,6 @@ public class Car {
     private String carGearbox;
 
     /**
-     * Car Condition.
-     */
-    private boolean carCondition;
-
-    /**
      * Car Class.
      */
     private String carClass;
@@ -113,20 +108,6 @@ public class Car {
     public void setCarGearbox(final String carGearbox) { this.carGearbox = carGearbox; }
 
     /**
-     * Returns <code>boolean</code> representation of this carCondition.
-     *
-     * @return carCondition Car Condition.
-     */
-    public boolean getCarCondition() { return carCondition; }
-
-    /**
-     * Sets the car's condition.
-     *
-     * @param carCondition Car Condition.
-     */
-    public void setCarCondition(final boolean carCondition) { this.carCondition = carCondition; }
-
-    /**
      * Returns <code>String</code> representation of this carClass.
      *
      * @return carClass Car Class.
@@ -147,7 +128,6 @@ public class Car {
                 + ", carYear='" + carYear + '\''
                 + ", carEngine=" + carEngine + '\''
                 + ", carGearbox=" + carGearbox + '\''
-                + ", carCondition=" + carCondition + '\''
                 + ", carClass=" + carClass
                 + '}';
     }

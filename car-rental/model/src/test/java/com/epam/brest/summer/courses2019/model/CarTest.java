@@ -32,12 +32,6 @@ public class CarTest {
     }
 
     @Test
-    public void getCarCondition(){
-        car.setCarCondition(false);
-        Assert.assertFalse(car.getCarCondition());
-    }
-
-    @Test
     public void getCarClass(){
         car.setCarClass("Business");
         Assert.assertTrue(car.getCarClass().equals("Business"));
