@@ -8,6 +8,12 @@ public class RentalTest {
     Rental rental = new Rental();
 
     @Test
+    public void getRentalId() {
+        rental.setRentalDays(7);
+        Assert.assertTrue(rental.getRentalId().equals(7));
+    }
+
+    @Test
     public void getRentalDays() {
         rental.setRentalDays(7);
         Assert.assertTrue(rental.getRentalDays().equals(7));

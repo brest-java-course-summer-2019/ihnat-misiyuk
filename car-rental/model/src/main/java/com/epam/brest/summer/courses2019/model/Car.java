@@ -11,6 +11,12 @@ public class Car {
     private String carBrand;
 
     /**
+     * Car Id.
+     */
+    private Integer carId;
+
+
+    /**
      * Car Year.
      */
     private Integer carYear;
@@ -121,10 +127,25 @@ public class Car {
      */
     public void setCarClass(final String carClass) { this.carClass = carClass; }
 
+    /**
+     * Returns <code>Integer</code> representation of this carId.
+     *
+     * @return carId Car Id.
+     */
+    public Integer getCarId() { return carId; }
+
+    /**
+     * Sets the car's id.
+     *
+     * @param carId Car Id.
+     */
+    public void setCarId(final Integer carId) { this.carId = carId; }
+
     @Override
     public String toString() {
         return "Car{"
                 + "carBrand=" + carBrand
+                + ",carId=" + carId + '\''
                 + ", carYear='" + carYear + '\''
                 + ", carEngine=" + carEngine + '\''
                 + ", carGearbox=" + carGearbox + '\''

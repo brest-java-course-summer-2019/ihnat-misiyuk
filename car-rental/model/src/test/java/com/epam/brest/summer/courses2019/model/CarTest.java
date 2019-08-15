@@ -14,6 +14,12 @@ public class CarTest {
     }
 
     @Test
+    public void getCarId(){
+        car.setCarId(3);
+        Assert.assertTrue(car.getCarId().equals(3));
+    }
+
+    @Test
     public void getCarYear(){
         car.setCarYear(1988);
         Assert.assertTrue(car.getCarYear().equals(1988));

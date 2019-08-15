@@ -6,6 +6,11 @@ package com.epam.brest.summer.courses2019.model;
 public class Rental {
 
     /**
+     * Rental Id.
+     */
+    private Integer rentalId;
+
+    /**
      * Rental Days.
      */
     private Integer rentalDays;
@@ -23,11 +28,26 @@ public class Rental {
     public Rental() {
     }
 
-    public Rental(Integer rentalDays, String rentalRate, Integer rentalPrice) {
+    public Rental(Integer rentalId, Integer rentalDays, String rentalRate, Integer rentalPrice) {
+        this.rentalId = rentalId;
         this.rentalDays = rentalDays;
         this.rentalRate = rentalRate;
         this.rentalPrice = rentalPrice;
     }
+
+    /**
+     * Returns <code>Integer</code> representation of this rentalId.
+     *
+     * @return rentalId Rental Id.
+     */
+    public Integer getRentalId() { return rentalId; }
+
+    /**
+     * Sets the rental's id.
+     *
+     * @param rentalId Rental Id.
+     */
+    public void setRentalId(Integer rentalId) { this.rentalId = rentalId; }
 
     /**
      * Returns <code>Integer</code> representation of this rentalDays.
@@ -74,7 +94,8 @@ public class Rental {
     @Override
     public String toString() {
         return "Rental{"
-                + "rentalDays=" + rentalDays
+                + "rentalId=" + rentalId
+                + ",rentalDays=" + rentalDays + '\''
                 + ", rentalRate='" + rentalRate + '\''
                 + ", rentalPrice=" + rentalPrice
                 + '}';
