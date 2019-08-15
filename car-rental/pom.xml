@@ -22,12 +22,9 @@
     <url>http://www.example.com</url>
 
     <modules>
-<!--        <module>dao</module>-->
-<!--        <module>service</module>-->
-<!--        <module>web-app</module>-->
-<!--        <module>test-db</module>-->
-        <!--    <module>rest-app</module>-->
         <module>model</module>
+        <module>dao</module>
+        <module>test-db</module>
     </modules>
 
     <distributionManagement>
