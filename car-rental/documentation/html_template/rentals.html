@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <link rel="stylesheet" href="css/style.css">
-    <title>Employees List</title>
+    <title>Rentals List</title>
 </head>
 <body>
 
@@ -17,22 +17,22 @@
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a href="index.html" class="navbar-brand"><img src="img/logo.svg" height="32" width="32" alt="HR"></a>
+        <a href="index.html" class="navbar-brand"><img src="img/car__23058.1527023262.png" height="32" width="32" alt="HR"></a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <a class="nav-item nav-link" href="departments.html">Departments</a>
-                <a class="nav-item nav-link active" href="employees.html">Employees</a>
+                <a class="nav-item nav-link" href="cars.html">Cars</a>
+                <a class="nav-item nav-link active" href="rentals.html">Rentals</a>
             </ul>
         </div>
     </nav>
     <nav id="main-header"
          class="py-1 mb-3 navbar navbar-expand-sm navbar-light bg-light text-dark">
-        <span class="navbar-brand text-uppercase mr-auto">Employees</span>
+        <span class="navbar-brand text-uppercase mr-auto">Rentals</span>
         <ul class="navbar-nav float-right">
             <li class="nav-item">
-                <a href="employee.html"
+                <a href="rental.html"
                    class="btn btn-light"
-                   title="Add employee"
+                   title="Add rental"
                    data-toggle="tooltip"
                    data-placement="bottom">
                     <i class="fa fa-plus"></i> <span
@@ -42,36 +42,51 @@
     </nav>
 </header>
 
-<section id="employees">
+<section id="rentals">
     <div class="container-fluid">
         <div class="row">
             <div class="col">
                 <div class="card">
                     <table class="table table-striped">
+<!--                        <thead class="thead-dark">-->
+<!--                        <tr>-->
+<!--                            <th>Name</th>-->
+<!--&lt;!&ndash;                            <th>Days</th>&ndash;&gt;-->
+<!--                            <th>Rate</th>-->
+<!--                            <th>Price</th>-->
+<!--                            <th></th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
                         <thead class="thead-dark">
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Salary</th>
+                            <th>Days</th>
+                            <th></th>
+                            <th>1-2</th>
+                            <th>3-4</th>
+                            <th>5-10</th>
+                            <th>11+</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Ivan Ivanov</td>
-                            <td>ivan.ivanov@test.com</td>
-                            <td>1000</td>
+                            <td>Rate "Main"</td>
+                            <td>All day long</td>
+                            <td>30 $</td>
+                            <td>25 $</td>
+                            <td>22 $</td>
+                            <td>20 $</td>
                             <td class="text-right">
-                                <a href="employee.html"
+                                <a href="rental.html"
                                    class="btn-sm btn-outline-secondary"
-                                   title="Edit employee"
+                                   title="Edit rental"
                                    data-toggle="tooltip"
                                    data-placement="top">
                                     <i class="fa fa-pencil"></i> <span
                                         class="d-none d-md-inline">Edit</span></a>
                                 <span data-toggle="modal" data-target="#deleteDialog">
                                 <a href="#" class="btn-sm btn-outline-secondary"
-                                   title="Delete employee"
+                                   title="Delete rental"
                                    data-toggle="tooltip"
                                    data-placement="top">
                                     <i class="fa fa-remove"></i> <span class="d-none d-md-inline">Delete</span></a>
@@ -79,20 +94,47 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Alexander Petrov</td>
-                            <td>alex.petrov@test.com</td>
-                            <td>1100</td>
+                            <td>Rate "Daily"</td>
+                            <td>From 9:00 till 18:00 - 20 $</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td class="text-right">
-                                <a href="employee.html"
+                                <a href="rental.html"
                                    class="btn-sm btn-outline-secondary"
-                                   title="Edit employee"
+                                   title="Edit rental"
                                    data-toggle="tooltip"
                                    data-placement="top">
                                     <i class="fa fa-pencil"></i> <span
                                         class="d-none d-md-inline">Edit</span></a>
                                 <span data-toggle="modal" data-target="#deleteDialog">
                                 <a href="#" class="btn-sm btn-outline-secondary"
-                                   title="Delete employee"
+                                   title="Delete rental"
+                                   data-toggle="tooltip"
+                                   data-placement="top">
+                                    <i class="fa fa-remove"></i> <span class="d-none d-md-inline">Delete</span></a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Rate "Weekend"</td>
+                            <td class="text-left">Fr 16:00 - Mn 10:00 price as for 2 days</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right">
+                                <a href="rental.html"
+                                   class="btn-sm btn-outline-secondary"
+                                   title="Edit rental"
+                                   data-toggle="tooltip"
+                                   data-placement="top">
+                                    <i class="fa fa-pencil"></i> <span
+                                        class="d-none d-md-inline">Edit</span></a>
+                                <span data-toggle="modal" data-target="#deleteDialog">
+                                <a href="#" class="btn-sm btn-outline-secondary"
+                                   title="Delete rental"
                                    data-toggle="tooltip"
                                    data-placement="top">
                                     <i class="fa fa-remove"></i> <span class="d-none d-md-inline">Delete</span></a>
