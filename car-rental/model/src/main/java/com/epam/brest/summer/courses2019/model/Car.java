@@ -15,7 +15,6 @@ public class Car {
      */
     private Integer carId;
 
-
     /**
      * Car Year.
      */
@@ -43,12 +42,16 @@ public class Car {
     }
 
     /**
-     * Constructor with department name.
+     * Constructor with car brand.
      *
-     * @param carBrand department name
+     * @param carBrand car brand
      */
-    public Car(String carBrand) {
+    public Car(String carBrand, Integer carYear, String carEngine, String carGearbox, String carClass) {
         this.carBrand = carBrand;
+        this.carYear = carYear;
+        this.carEngine = carEngine;
+        this.carGearbox = carGearbox;
+        this.carClass = carClass;
     }
 
     /**

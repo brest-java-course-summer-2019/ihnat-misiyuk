@@ -28,8 +28,7 @@ public class Rental {
     public Rental() {
     }
 
-    public Rental(Integer rentalId, Integer rentalDays, String rentalRate, Integer rentalPrice) {
-        this.rentalId = rentalId;
+    public Rental(Integer rentalDays, String rentalRate, Integer rentalPrice) {
         this.rentalDays = rentalDays;
         this.rentalRate = rentalRate;
         this.rentalPrice = rentalPrice;
