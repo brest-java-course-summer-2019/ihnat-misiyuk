@@ -17,7 +17,7 @@
     <!--    </dependencies>-->
     <packaging>pom</packaging>
 
-    <name>Car Repair</name>
+    <name>Car Rental</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -63,6 +63,7 @@
         <org.springframework.version>5.1.8.RELEASE</org.springframework.version>
         <thymeleaf-spring5.version>3.0.11.RELEASE</thymeleaf-spring5.version>
         <jackson-databind.version>2.9.8</jackson-databind.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
     </properties>
 
     <dependencyManagement>
@@ -156,6 +157,12 @@
                 <artifactId>javax.servlet-api</artifactId>
                 <version>4.0.0</version>
                 <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
             </dependency>
 
             <dependency>
@@ -370,6 +377,9 @@
                                     </limits>
                                 </rule>
                             </rules>
+                            <excludes>
+                                <exclude>com/epam/brest/summer/courses2019/model/**/*</exclude>
+                            </excludes>
                         </configuration>
                     </execution>
                     <execution>
@@ -468,7 +478,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <configuration>
-                    <!--          <linkXref>true</linkXref>-->
+<!--                    <linkXref>true</linkXref>-->
                     <sourceEncoding>utf-8</sourceEncoding>
                     <minimumTokens>100</minimumTokens>
                 </configuration>
