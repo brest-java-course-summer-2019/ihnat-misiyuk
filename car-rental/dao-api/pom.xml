@@ -11,5 +11,15 @@
 
     <artifactId>dao-api</artifactId>
 
+    <name>Car Rental DAO API</name>
+
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.epam.brest.summer.courses2019</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
