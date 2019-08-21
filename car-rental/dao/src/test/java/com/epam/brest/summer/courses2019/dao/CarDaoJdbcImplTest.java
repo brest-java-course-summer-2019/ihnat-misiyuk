@@ -1,6 +1,7 @@
 package com.epam.brest.summer.courses2019.dao;
 
 import com.epam.brest.summer.courses2019.model.Car;
+import com.epam.brest.summer.courses2019.model.stub.CarStub;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,19 @@ public class CarDaoJdbcImplTest {
     @Autowired
     CarDao carDao;
 
+    @Autowired
+    CarStubDao carStubDao;
+
     @Test
     public void findAll() {
         List<Car> cars = carDao.findAll();
+        assertNotNull(cars);
+        assertTrue(cars.size() > 0);
+    }
+
+    @Test
+    public void findAllWithRequestedGearbox() {
+        List<CarStub> cars = carStubDao.findAllWithRequestedGearbox();
         assertNotNull(cars);
         assertTrue(cars.size() > 0);
     }
@@ -52,7 +63,7 @@ public class CarDaoJdbcImplTest {
 
     @Test
     public void updateCar() {
-        Car newCar = new Car(HONDA, 2018, "2.0", "MECHANICAL", "Sport");
+        Car newCar = new Car(HONDA);
         newCar = carDao.add(newCar);
         newCar.setCarBrand(NEW_HONDA);
         carDao.update(newCar);
@@ -63,15 +74,13 @@ public class CarDaoJdbcImplTest {
 
     @Test
     public void deleteCar() {
-        Car car = new Car(HONDA, 2018, "2.0", "MECHANICAL", "Sport");
+        Car car = new Car(HONDA);
         car = carDao.add(car);
         List<Car> cars = carDao.findAll();
         int sizeBefore = cars.size();
         carDao.delete(car.getCarId());
         assertTrue((sizeBefore - 1) == carDao.findAll().size());
     }
-
-
 }
 
 

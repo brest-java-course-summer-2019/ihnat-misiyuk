@@ -54,10 +54,10 @@ public class CarDaoJdbcImpl implements CarDao {
         MapSqlParameterSource parameters = new MapSqlParameterSource();
         parameters.addValue("carBrand", car.getCarBrand());
 //        добавлять ли так же остальные поля?
-        parameters.addValue("carYear", car.getCarYear());
-        parameters.addValue("carEngine", car.getCarEngine());
-        parameters.addValue("carGearbox", car.getCarGearbox());
-        parameters.addValue("carClass", car.getCarClass());
+//        parameters.addValue("carYear", car.getCarYear());
+//        parameters.addValue("carEngine", car.getCarEngine());
+//        parameters.addValue("carGearbox", car.getCarGearbox());
+//        parameters.addValue("carClass", car.getCarClass());
 
         KeyHolder generateKeyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(ADD_CAR, parameters, generateKeyHolder);
@@ -105,10 +105,10 @@ public class CarDaoJdbcImpl implements CarDao {
             Car car = new Car();
             car.setCarId(resultSet.getInt("car_id"));
             car.setCarBrand(resultSet.getString("car_brand"));
-            car.setCarYear(resultSet.getInt("car_year"));
-            car.setCarEngine(resultSet.getString("car_engine"));
-            car.setCarGearbox(resultSet.getString("car_gearbox"));
-            car.setCarClass(resultSet.getString("car_class"));
+//            car.setCarYear(resultSet.getInt("car_year"));
+//            car.setCarEngine(resultSet.getString("car_engine"));
+//            car.setCarGearbox(resultSet.getString("car_gearbox"));
+//            car.setCarClass(resultSet.getString("car_class"));
             return car;
         }
     }
