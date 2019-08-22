@@ -15,6 +15,7 @@ CREATE TABLE rental (
   rental_days INT NOT NULL,
   rental_rate VARCHAR(255) NOT NULL,
   rental_price INT NOT NULL,
+  car_id INT NOT NULL
   PRIMARY KEY (rental_id),
   FOREIGN KEY (car_id) REFERENCES car(car_id)
 );
