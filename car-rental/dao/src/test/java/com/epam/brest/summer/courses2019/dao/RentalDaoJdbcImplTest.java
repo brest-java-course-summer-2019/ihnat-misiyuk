@@ -31,6 +31,13 @@ public class RentalDaoJdbcImplTest {
     }
 
     @Test
+    public void findByCarId() {
+        List<Rental> rentals = rentalDao.findByCarId(1);
+        assertNotNull(rentalDao);
+        assertTrue(rentals.size() > 0);
+    }
+
+    @Test
     public void findById() {
         assertNotNull(rentalDao);
         Rental rental = rentalDao.findById(1).get();
@@ -44,7 +51,7 @@ public class RentalDaoJdbcImplTest {
     public void add() {
         List<Rental> rentals = rentalDao.findAll();
         int sizeBefore = rentals.size();
-        Rental rental = new Rental(5, "NEW", 40);
+        Rental rental = new Rental(5, "NEW", 40, 1);
         Rental newRental = rentalDao.add(rental);
         assertNotNull(newRental.getRentalId());
         assertTrue(newRental.getRentalDays().equals(rental.getRentalDays()));
@@ -68,7 +75,7 @@ public class RentalDaoJdbcImplTest {
 
     @Test
     public void delete() {
-        Rental rental = new Rental(7, "MAIN", 90);
+        Rental rental = new Rental(7, "MAIN", 90, 1);
         rentalDao.add(rental);
         List<Rental> rentals = rentalDao.findAll();
         int sizeBefore = rentals.size();

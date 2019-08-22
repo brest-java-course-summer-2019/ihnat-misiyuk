@@ -1,8 +1,11 @@
 package com.epam.brest.summer.courses2019.dao;
 
 import com.epam.brest.summer.courses2019.model.Rental;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -10,31 +13,32 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-//  отсутствует метод findByCarId
 public class RentalDaoJdbcImpl implements RentalDao {
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    private final static String SELECT_ALL =
-            "select rental_id, rental_days, rental_rate, rental_price from rental order by 1, 3";
+    @Value("${rental.findAll}")
+    private String findAllSql;
 
-    private static final String FIND_BY_ID =
-            "select rental_id, rental_days, rental_rate, rental_price " +
-                    "from rental where rental_id = :rentalId";
+    @Value("${rental.findById}")
+    private String findByIdSql;
 
-    private final static String ADD_RENTAL =
-            "insert into rental (rental_id, rental_days, rental_rate, rental_price) " +
-                    "values (:rentalId, :rentalDays, :rentalRate, :rentalPrice)";
+    @Value("${rental.findByCarId}")
+    private String findByCarIdSql;
 
-    private static final String UPDATE =
-            "update rental set rental_days = :rentalDays, rental_rate = :rentalRate, rental_price = :rentalPrice, " +
-                    "where rental_id = :rentalId";
+    @Value("${rental.insert}")
+    private String insertSql;
 
-    private static final String DELETE =
-            "delete from rental where rental_id = :rentalId";
+    @Value("${rental.update}")
+    private String updateSql;
+
+    @Value("${rental.delete}")
+    private String deleteSql;
 
     private static final String CAR_ID = "carId";
     private static final String RENTAL_ID = "rentalId";
@@ -44,45 +48,53 @@ public class RentalDaoJdbcImpl implements RentalDao {
     }
 
     @Override
-    public List<Rental> findAll(){
-        List<Rental> rentals =
-                namedParameterJdbcTemplate.query(SELECT_ALL, BeanPropertyRowMapper.newInstance(Rental.class));
+    public List<Rental> findAll() {
+        List<Rental>rentals = namedParameterJdbcTemplate.query(findAllSql, new RentalRowMapper());
         return rentals;
     }
 
     @Override
-    public Optional<Rental> findById(Integer rentalId){
+    public List<Rental> findByCarId(Integer carId) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource(CAR_ID, carId);
+        List<Rental> results = namedParameterJdbcTemplate.query(findByCarIdSql, namedParameters,
+                BeanPropertyRowMapper.newInstance(Rental.class));
+        return results;
+    }
+
+    @Override
+    public Optional<Rental> findById(Integer rentalId) {
         SqlParameterSource namedParameters = new MapSqlParameterSource(RENTAL_ID, rentalId);
-        List<Rental> results = namedParameterJdbcTemplate.query(FIND_BY_ID, namedParameters,
+        List<Rental> results = namedParameterJdbcTemplate.query(findByIdSql, namedParameters,
                 BeanPropertyRowMapper.newInstance(Rental.class));
         return Optional.ofNullable(DataAccessUtils.uniqueResult(results));
     }
 
     @Override
-    public Rental add(Rental rental){
+    public Rental add(Rental rental) {
         MapSqlParameterSource parameters = new MapSqlParameterSource();
         parameters.addValue("rentalDays", rental.getRentalDays());
         parameters.addValue("rentalRate", rental.getRentalRate());
         parameters.addValue("rentalPrice", rental.getRentalPrice());
 
-        KeyHolder generateKeyHolder = new GeneratedKeyHolder();
-        namedParameterJdbcTemplate.update(ADD_RENTAL, parameters, generateKeyHolder);
-        rental.setRentalId(generateKeyHolder.getKey().intValue());
+        KeyHolder generatedKeyHolder = new GeneratedKeyHolder();
+        namedParameterJdbcTemplate.update(insertSql, parameters, generatedKeyHolder);
+        rental.setRentalId(generatedKeyHolder.getKey().intValue());
         return rental;
     }
 
     @Override
-    public void update(Rental rental){
-        Optional.of(namedParameterJdbcTemplate.update(UPDATE, new BeanPropertySqlParameterSource(rental)))
-                .filter(this::successfullyUpdated)
-                .orElseThrow(() -> new RuntimeException("Failed to update rental in DB"));
+    public void update(Rental rental) {
+        if (namedParameterJdbcTemplate.update(updateSql, new BeanPropertySqlParameterSource(rental)) < 1) {
+            throw new EmptyResultDataAccessException(
+                    String.format("Failed to update. '%s' not found in the DB", rental), 1);
+        }
     }
 
     @Override
-    public void delete(Integer rentalId){
+    public void delete(Integer rentalId) {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
         mapSqlParameterSource.addValue(RENTAL_ID, rentalId);
-        Optional.of(namedParameterJdbcTemplate.update(DELETE, mapSqlParameterSource))
+        Optional.of(namedParameterJdbcTemplate.update(deleteSql, mapSqlParameterSource))
                 .filter(this::successfullyUpdated)
                 .orElseThrow(() -> new RuntimeException("Failed to delete rental from DB"));
     }
@@ -90,7 +102,112 @@ public class RentalDaoJdbcImpl implements RentalDao {
     private boolean successfullyUpdated(int numRowsUpdated) {
         return numRowsUpdated > 0;
     }
+
+    private class RentalRowMapper implements RowMapper<Rental> {
+        @Override
+        public Rental mapRow(ResultSet resultSet, int i) throws SQLException {
+            Rental rental = new Rental();
+            rental.setRentalId(resultSet.getInt("rental_id"));
+            rental.setRentalDays(resultSet.getInt("rental_days"));
+            rental.setRentalRate(resultSet.getString("rental_rate"));
+            rental.setRentalPrice(resultSet.getInt("rental_price"));
+            return rental;
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//public class RentalDaoJdbcImpl implements RentalDao {
+//
+//    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+//
+//    private final static String SELECT_ALL =
+//            "select rental_id, rental_days, rental_rate, rental_price from rental order by 1, 3";
+//
+//    private static final String FIND_BY_ID =
+//            "select rental_id, rental_days, rental_rate, rental_price " +
+//                    "from rental where rental_id = :rentalId";
+//
+//    private final static String ADD_RENTAL =
+//            "insert into rental (rental_id, rental_days, rental_rate, rental_price) " +
+//                    "values (:rentalId, :rentalDays, :rentalRate, :rentalPrice)";
+//
+//    private static final String UPDATE =
+//            "update rental set rental_days = :rentalDays, rental_rate = :rentalRate, rental_price = :rentalPrice, " +
+//                    "where rental_id = :rentalId";
+//
+//    private static final String DELETE =
+//            "delete from rental where rental_id = :rentalId";
+//
+//    private static final String CAR_ID = "carId";
+//    private static final String RENTAL_ID = "rentalId";
+//
+//    public RentalDaoJdbcImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+//        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+//    }
+//
+//    @Override
+//    public List<Rental> findAll(){
+//        List<Rental> rentals =
+//                namedParameterJdbcTemplate.query(SELECT_ALL, BeanPropertyRowMapper.newInstance(Rental.class));
+//        return rentals;
+//    }
+//
+//    @Override
+//    public Optional<Rental> findById(Integer rentalId){
+//        SqlParameterSource namedParameters = new MapSqlParameterSource(RENTAL_ID, rentalId);
+//        List<Rental> results = namedParameterJdbcTemplate.query(FIND_BY_ID, namedParameters,
+//                BeanPropertyRowMapper.newInstance(Rental.class));
+//        return Optional.ofNullable(DataAccessUtils.uniqueResult(results));
+//    }
+//
+//    @Override
+//    public Rental add(Rental rental){
+//        MapSqlParameterSource parameters = new MapSqlParameterSource();
+//        parameters.addValue("rentalDays", rental.getRentalDays());
+//        parameters.addValue("rentalRate", rental.getRentalRate());
+//        parameters.addValue("rentalPrice", rental.getRentalPrice());
+//
+//        KeyHolder generateKeyHolder = new GeneratedKeyHolder();
+//        namedParameterJdbcTemplate.update(ADD_RENTAL, parameters, generateKeyHolder);
+//        rental.setRentalId(generateKeyHolder.getKey().intValue());
+//        return rental;
+//    }
+//
+//    @Override
+//    public void update(Rental rental){
+//        Optional.of(namedParameterJdbcTemplate.update(UPDATE, new BeanPropertySqlParameterSource(rental)))
+//                .filter(this::successfullyUpdated)
+//                .orElseThrow(() -> new RuntimeException("Failed to update rental in DB"));
+//    }
+//
+//    @Override
+//    public void delete(Integer rentalId){
+//        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+//        mapSqlParameterSource.addValue(RENTAL_ID, rentalId);
+//        Optional.of(namedParameterJdbcTemplate.update(DELETE, mapSqlParameterSource))
+//                .filter(this::successfullyUpdated)
+//                .orElseThrow(() -> new RuntimeException("Failed to delete rental from DB"));
+//    }
+//
+//    private boolean successfullyUpdated(int numRowsUpdated) {
+//        return numRowsUpdated > 0;
+//    }
+//}
 
 
 
