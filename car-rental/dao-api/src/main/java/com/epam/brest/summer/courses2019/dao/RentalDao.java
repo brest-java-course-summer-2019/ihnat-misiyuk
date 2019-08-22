@@ -16,13 +16,13 @@ public interface RentalDao {
      */
     List<Rental> findAll();
 
-//    /**
-//     * Get all rentals with specified car id.
-//     *
-//     * @param carId car id
-//     * @return list of rentals by car id
-//     */
-//    List<Rental> findByCarId(Integer carId);
+    /**
+     * Get all rentals with specified car id.
+     *
+     * @param carId car id
+     * @return list of rentals by car id
+     */
+    List<Rental> findByCarId(Integer carId);
 
     /**
      * Get rental with specified id.
