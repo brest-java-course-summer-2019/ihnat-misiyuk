@@ -25,6 +25,7 @@
         <module>model</module>
         <module>dao</module>
         <module>test-db</module>
+        <module>dao-api</module>
     </modules>
 
     <distributionManagement>
