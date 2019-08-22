@@ -25,13 +25,19 @@ public class Rental {
      */
     private Integer rentalPrice;
 
+    /**
+     * Car Id.
+     */
+    private Integer carId;
+
     public Rental() {
     }
 
-    public Rental(Integer rentalDays, String rentalRate, Integer rentalPrice) {
+    public Rental(Integer rentalDays, String rentalRate, Integer rentalPrice, Integer carId) {
         this.rentalDays = rentalDays;
         this.rentalRate = rentalRate;
         this.rentalPrice = rentalPrice;
+        this.carId = carId;
     }
 
     /**
@@ -90,13 +96,28 @@ public class Rental {
      */
     public void setRentalPrice(Integer rentalPrice) { this.rentalPrice = rentalPrice; }
 
+    /**
+     * Returns <code>Integer</code> representation of this carId.
+     *
+     * @return carId Car Id.
+     */
+    public Integer getCarId() { return carId; }
+
+    /**
+     * Sets the car's id.
+     *
+     * @param carId Car Id.
+     */
+    public void setCarId(Integer carId) { this.carId = carId; }
+
     @Override
     public String toString() {
         return "Rental{"
                 + "rentalId=" + rentalId
                 + ",rentalDays=" + rentalDays + '\''
                 + ", rentalRate='" + rentalRate + '\''
-                + ", rentalPrice=" + rentalPrice
+                + ", rentalPrice=" + rentalPrice + '\''
+                + ", carId=" + carId
                 + '}';
     }
 }

@@ -31,4 +31,10 @@ public class RentalTest {
         Assert.assertTrue(rental.getRentalPrice().equals(33));
     }
 
+    @Test
+    public void getCarId() {
+        rental.setCarId(3);
+        Assert.assertTrue(rental.getCarId().equals(3));
+    }
+
 }
