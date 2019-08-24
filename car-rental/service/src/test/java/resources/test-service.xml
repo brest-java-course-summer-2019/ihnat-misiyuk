@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <tx:annotation-driven/>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:sql.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="carDao" class="com.epam.brest.summer.courses2019.dao.CarDaoJdbcImpl">
+        <constructor-arg ref="namedParameterJdbcTemplate"/>
+    </bean>
+    <bean id="carStubDao" class="com.epam.brest.summer.courses2019.dao.CarStubDaoJdbcImpl">
+        <constructor-arg ref="namedParameterJdbcTemplate"/>
+    </bean>
+
+    <bean id="departmentService" class="com.epam.brest.summer.courses2019.service.CarServiceImpl">
+        <constructor-arg ref="carDao"/>
+        <constructor-arg ref="carStubDao"/>
+    </bean>
+
+    <bean id="rentalDao" class="com.epam.brest.summer.courses2019.dao.RentalDaoJdbcImpl">
+        <constructor-arg ref="namedParameterJdbcTemplate"/>
+    </bean>
+
+    <bean id="rentalService" class="com.epam.brest.summer.courses2019.service.RentalServiceImpl">
+        <constructor-arg ref="rentalDao"/>
+    </bean>
+
+
+</beans>
