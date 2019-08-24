@@ -9,7 +9,7 @@ public class RentalTest {
 
     @Test
     public void getRentalId() {
-        rental.setRentalDays(7);
+        rental.setRentalId(7);
         Assert.assertTrue(rental.getRentalId().equals(7));
     }
 

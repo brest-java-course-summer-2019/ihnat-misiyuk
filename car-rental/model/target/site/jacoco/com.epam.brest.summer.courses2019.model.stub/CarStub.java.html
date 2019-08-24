@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CarStub.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Car Rental Model</a> &gt; <a href="index.source.html" class="el_package">com.epam.brest.summer.courses2019.model.stub</a> &gt; <span class="el_source">CarStub.java</span></div><h1>CarStub.java</h1><pre class="source lang-java linenums">package com.epam.brest.summer.courses2019.model.stub;
+
+public class CarStub {
+
+    /**
+     * Car Id.
+     */
+    private Integer carId;
+
+    /**
+     * Car Brand.
+     */
+    private String carBrand;
+
+    /**
+     * Car Year.
+     */
+    private Integer carYear;
+
+    /**
+     * Car Engine.
+     */
+    private String carEngine;
+
+    /**
+     * Car Gearbox.
+     */
+    private String carGearbox;
+
+    /**
+     * Car Class.
+     */
+    private String carClass;
+
+    /**
+     * Constructor without arguments.
+     */
+<span class="nc" id="L38">    public CarStub() {</span>
+<span class="nc" id="L39">    }</span>
+
+    /**
+     * Constructor with car brand.
+     *
+     * @param carBrand car brand
+     */
+<span class="nc" id="L46">    public CarStub(String carBrand, Integer carYear, String carEngine, String carGearbox, String carClass) {</span>
+<span class="nc" id="L47">        this.carBrand = carBrand;</span>
+<span class="nc" id="L48">        this.carYear = carYear;</span>
+<span class="nc" id="L49">        this.carEngine = carEngine;</span>
+<span class="nc" id="L50">        this.carGearbox = carGearbox;</span>
+<span class="nc" id="L51">        this.carClass = carClass;</span>
+<span class="nc" id="L52">    }</span>
+
+    /**
+     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this carId.
+     *
+     * @return carId Car Id.
+     */
+<span class="nc" id="L59">    public Integer getCarId() { return carId; }</span>
+
+    /**
+     * Sets the car's id.
+     *
+     * @param carId Car Id.
+     */
+<span class="nc" id="L66">    public void setCarId(final Integer carId) { this.carId = carId; }</span>
+
+    /**
+     * Returns &lt;code&gt;String&lt;/code&gt; representation of this carBrand.
+     *
+     * @return carBrand Car Brand.
+     */
+    public String getCarBrand() {
+<span class="nc" id="L74">        return carBrand;</span>
+    }
+
+    /**
+     * Sets the car's brand.
+     *
+     * @param carBrand Car Brand.
+     */
+<span class="nc" id="L82">    public void setCarBrand(final String carBrand) { this.carBrand = carBrand; }</span>
+
+    /**
+     //     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this carYear.
+     //     *
+     //     * @return carYear Car Year.
+     //     */
+<span class="nc" id="L89">    public Integer getCarYear() { return carYear; }</span>
+
+    /**
+     * Sets the car's year.
+     *
+     * @param carYear Car Year.
+     */
+    public void setCarYear(final Integer carYear) {
+<span class="nc" id="L97">        this.carYear = carYear;</span>
+<span class="nc" id="L98">    }</span>
+
+    /**
+     * Returns &lt;code&gt;String&lt;/code&gt; representation of this carEngine.
+     *
+     * @return carEngine Car Engine.
+     */
+<span class="nc" id="L105">    public String getCarEngine() { return carEngine; }</span>
+
+    /**
+     * Sets the car's engine.
+     *
+     * @param carEngine Car Engine.
+     */
+    public void setCarEngine(final String carEngine) {
+<span class="nc" id="L113">        this.carEngine = carEngine;</span>
+<span class="nc" id="L114">    }</span>
+
+    /**
+     * Returns &lt;code&gt;String&lt;/code&gt; representation of this carGearbox.
+     *
+     * @return carGearbox Car Gearbox.
+     */
+<span class="nc" id="L121">    public String getCarGearbox() { return carGearbox; }</span>
+
+    /**
+     * Sets the car's gearbox.
+     *
+     * @param carGearbox Car Gearbox.
+     */
+<span class="nc" id="L128">    public void setCarGearbox(final String carGearbox) { this.carGearbox = carGearbox; }</span>
+
+    /**
+     * Returns &lt;code&gt;String&lt;/code&gt; representation of this carClass.
+     *
+     * @return carClass Car Class.
+     */
+<span class="nc" id="L135">    public String getCarClass() { return carClass; }</span>
+
+    /**
+     * Sets the car's class.
+     *
+     * @param carClass Car Class.
+     */
+<span class="nc" id="L142">    public void setCarClass(final String carClass) { this.carClass = carClass; }</span>
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L149">        return &quot;CarStub{&quot;</span>
+                + &quot;carBrand=&quot; + carBrand
+                + &quot;,carId=&quot; + carId + '\''
+                + &quot;, carYear='&quot; + carYear + '\''
+                + &quot;, carEngine=&quot; + carEngine + '\''
+                + &quot;, carGearbox=&quot; + carGearbox + '\''
+                + &quot;, carClass=&quot; + carClass
+                + '}';
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

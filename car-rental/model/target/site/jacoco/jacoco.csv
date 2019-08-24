@@ -1,0 +1,4 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Car Rental Model,com.epam.brest.summer.courses2019.model.stub,CarStub,108,0,0,0,24,0,15,0,15,0
+Car Rental Model,com.epam.brest.summer.courses2019.model,Rental,53,38,0,0,7,12,2,11,2,11
+Car Rental Model,com.epam.brest.summer.courses2019.model,Car,23,17,0,0,4,6,2,5,2,5
