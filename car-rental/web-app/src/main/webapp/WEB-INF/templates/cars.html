@@ -1,14 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="../../resources/static/css/font-awesome.min.css"
+          th:href="@{/resources/static/css/font-awesome.min.css}">
+    <link rel="stylesheet"
+          href="../../resources/static/css/bootstrap.min.css"
+          th:href="@{/resources/static/css/bootstrap.min.css}">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+          href="../../resources/static/css/style.css"
+          th:href="@{/resources/static/css/style.css}">
     <title>Cars List</title>
 </head>
 <body>
@@ -18,11 +24,17 @@
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="index.html" class="navbar-brand"><img src="img/car__23058.1527023262.png" height="32" width="32" alt="HR"></a>
+            <a href="index.html" class="navbar-brand"><img src="../../resources/static/img/car__23058.1527023262.png"
+                                                           th:src="@{/resources/static/img/car__23058.1527023262.png}"
+                                                           height="32" width="32" alt="HR"></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <a class="nav-item nav-link active" href="cars.html">Cars</a>
-                    <a class="nav-item nav-link" href="rentals.html">Rentals</a>
+                    <a class="nav-item nav-link active"
+                       href="cars.html"
+                       th:href="@{/cars}">Cars</a>
+                    <a class="nav-item nav-link"
+                       href="rentals.html"
+                       th:href="@{/rentals}">Rentals</a>
                 </ul>
             </div>
         </nav>
@@ -32,6 +44,7 @@
             <ul class="navbar-nav float-right">
                 <li class="nav-item">
                     <a href="car.html"
+                       th:href="@{/car}"
                        class="btn btn-light"
                        title="Add department"
                        data-toggle="tooltip"
@@ -62,22 +75,25 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Audi A4</td>
-                                <td>1</td>
-                                <td>2008</td>
-                                <td>2.0</td>
-                                <td>Mechanical</td>
-                                <td>Medium</td>
+                            <tr th:each="car : ${cars}">
+                                <td th:text="${car.carBrand}">Audi A4</td>
+                                <td th:text="${car.carId}">1</td>
+                                <td th:text="${car.carYear}">2008</td>
+                                <td th:text="${car.carEngine}">2.0</td>
+                                <td th:text="${car.carGearbox}">Mechanical</td>
+                                <td th:text="${car.carClass}">Medium</td>
                                 <td class="text-right">
                                     <a href="car.html"
+                                       th:href="@{|/car/${car.carId}|}"
                                        class="btn-sm btn-outline-secondary"
                                        title="Edit car"
                                        data-toggle="tooltip"
                                        data-placement="top">
                                         <i class="fa fa-pencil"></i> <span
                                             class="d-none d-md-inline">Edit</span></a>
-                                    <span data-toggle="modal" data-target="#deleteDialog">
+                                    <span data-toggle="modal"
+                                          data-target="#deleteDialog"
+                                          th:attr="data-id=${car.carId},data-name=${car.carBrand}">
                                     <a href="#" class="btn-sm btn-outline-secondary"
                                        title="delete car"
                                        data-toggle="tooltip"
@@ -86,22 +102,26 @@
                                     </span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;Audi A6</td>
-                                <td>2</td>
-                                <td>2006</td>
-                                <td>3.2</td>
-                                <td>Automatic</td>
-                                <td>Business</td>
+<!--                            НУЖЕН ЛИ th:remove="all"-->
+                            <tr th:remove="all">
+                                <td th:text="${car.carBrand}">&nbsp;&nbsp;Audi A6</td>
+                                <td th:text="${car.carId}">2</td>
+                                <td th:text="${car.carYear}">2006</td>
+                                <td th:text="${car.carEngine}">3.2</td>
+                                <td th:text="${car.carGearbox}">Automatic</td>
+                                <td th:text="${car.carClass}">Business</td>
                                 <td class="text-right">
                                     <a href="car.html"
+                                       th:href="@{|/car/${car.carId}|}"
                                        class="btn-sm btn-outline-secondary"
                                        title="Edit car"
                                        data-toggle="tooltip"
                                        data-placement="top">
                                         <i class="fa fa-pencil"></i> <span
                                             class="d-none d-md-inline">Edit</span></a>
-                                    <span data-toggle="modal" data-target="#deleteDialog">
+                                    <span data-toggle="modal"
+                                          data-target="#deleteDialog"
+                                          th:attr="data-id=${car.carId},data-name=${car.carBrand}">
                                     <a href="#" class="btn-sm btn-outline-secondary"
                                        title="delete car"
                                        data-toggle="tooltip"
@@ -110,22 +130,25 @@
                                     </span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;BMW M5</td>
-                                <td>3</td>
-                                <td>2012</td>
-                                <td>4.0</td>
-                                <td>Automatic</td>
-                                <td>Sports</td>
+                            <tr  th:remove="all">
+                                <td th:text="${car.carBrand}">&nbsp;&nbsp;BMW M5</td>
+                                <td th:text="${car.carId}">3</td>
+                                <td th:text="${car.carYear}">2012</td>
+                                <td th:text="${car.carEngine}">4.0</td>
+                                <td th:text="${car.carGearbox}">Automatic</td>
+                                <td th:text="${car.carClass}">Sports</td>
                                 <td class="text-right">
                                     <a href="car.html"
+                                       th:href="@{|/car/${car.carId}|}"
                                        class="btn-sm btn-outline-secondary"
                                        title="Edit car"
                                        data-toggle="tooltip"
                                        data-placement="top">
                                         <i class="fa fa-pencil"></i> <span
                                             class="d-none d-md-inline">Edit</span></a>
-                                    <span data-toggle="modal" data-target="#deleteDialog">
+                                    <span data-toggle="modal"
+                                          data-target="#deleteDialog"
+                                          th:attr="data-id=${car.carId},data-name=${car.carBrand}">
                                     <a href="#" class="btn-sm btn-outline-secondary"
                                        title="delete car"
                                        data-toggle="tooltip"
@@ -134,22 +157,25 @@
                                     </span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;Jaguar XF</td>
-                                <td>4</td>
-                                <td>2006</td>
-                                <td>4.2</td>
-                                <td>Mechanical</td>
-                                <td>Business</td>
+                            <tr th:remove="all">
+                                <td th:text="${car.carBrand}">&nbsp;&nbsp;&nbsp;&nbsp;Jaguar XF</td>
+                                <td th:text="${car.carId}">4</td>
+                                <td th:text="${car.carYear}">2006</td>
+                                <td th:text="${car.carEngine}">4.2</td>
+                                <td th:text="${car.carGearbox}">Mechanical</td>
+                                <td th:text="${car.carClass}">Business</td>
                                 <td class="text-right">
                                     <a href="car.html"
+                                       th:href="@{|/car/${car.carId}|}"
                                        class="btn-sm btn-outline-secondary"
                                        title="Edit car"
                                        data-toggle="tooltip"
                                        data-placement="top">
                                         <i class="fa fa-pencil"></i> <span
                                             class="d-none d-md-inline">Edit</span></a>
-                                    <span data-toggle="modal" data-target="#deleteDialog">
+                                    <span data-toggle="modal"
+                                          data-target="#deleteDialog"
+                                          th:attr="data-id=${car.carId},data-name=${car.carBrand}">
                                     <a href="#" class="btn-sm btn-outline-secondary"
                                        title="delete car"
                                        data-toggle="tooltip"
@@ -158,22 +184,25 @@
                                     </span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;Fiat Bravo</td>
-                                <td>5</td>
-                                <td>2010</td>
-                                <td>1.8</td>
-                                <td>Mechanical</td>
-                                <td>Compact</td>
+                            <tr th:remove="all">
+                                <td th:text="${car.carBrand}">&nbsp;&nbsp;&nbsp;&nbsp;Fiat Bravo</td>
+                                <td th:text="${car.carId}">5</td>
+                                <td th:text="${car.carYear}">2010</td>
+                                <td th:text="${car.carEngine}">1.8</td>
+                                <td th:text="${car.carGearbox}">Mechanical</td>
+                                <td th:text="${car.carClass}">Compact</td>
                                 <td class="text-right">
                                     <a href="car.html"
+                                       th:href="@{|/car/${car.carId}|}"
                                        class="btn-sm btn-outline-secondary"
                                        title="Edit car"
                                        data-toggle="tooltip"
                                        data-placement="top">
                                         <i class="fa fa-pencil"></i> <span
                                             class="d-none d-md-inline">Edit</span></a>
-                                    <span data-toggle="modal" data-target="#deleteDialog">
+                                    <span data-toggle="modal"
+                                          data-target="#deleteDialog"
+                                          th:attr="data-id=${car.carId},data-name=${car.carBrand}">
                                     <a href="#" class="btn-sm btn-outline-secondary"
                                        title="delete car"
                                        data-toggle="tooltip"
@@ -182,22 +211,25 @@
                                     </span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;Lexus RX400H</td>
-                                <td>6</td>
-                                <td>2007</td>
-                                <td>3.0</td>
-                                <td>Automatic</td>
-                                <td>Medium</td>
+                            <tr  th:remove="all">
+                                <td th:text="${car.carBrand}">&nbsp;&nbsp;Lexus RX400H</td>
+                                <td th:text="${car.carId}">6</td>
+                                <td th:text="${car.carYear}">2007</td>
+                                <td th:text="${car.carEngine}">3.0</td>
+                                <td th:text="${car.carGearbox}">Automatic</td>
+                                <td th:text="${car.carClass}">Medium</td>
                                 <td class="text-right">
                                     <a href="car.html"
+                                       th:href="@{|/car/${car.carId}|}"
                                        class="btn-sm btn-outline-secondary"
                                        title="Edit car"
                                        data-toggle="tooltip"
                                        data-placement="top">
                                         <i class="fa fa-pencil"></i> <span
                                             class="d-none d-md-inline">Edit</span></a>
-                                    <span data-toggle="modal" data-target="#deleteDialog">
+                                    <span data-toggle="modal"
+                                          data-target="#deleteDialog"
+                                          th:attr="data-id=${car.carId},data-name=${car.carBrand}">
                                     <a href="#" class="btn-sm btn-outline-secondary"
                                        title="delete car"
                                        data-toggle="tooltip"
@@ -244,12 +276,20 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../../resources/static/js/jquery-3.3.1.slim.min.js"
+            th:src="@{/resources/static/js/jquery-3.3.1.slim.min.js}"></script>
+    <script src="../../resources/static/js/popper.min.js"
+            th:src="@{/resources/static/js/popper.min.js}"></script>
+    <script src="../../resources/static/js/bootstrap.min.js"
+            th:src="@{/resources/static/js/bootstrap.min.js}"></script>
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
+        })
+        $('#deleteDialog').on('show.bs.modal', function (event) {
+            var target = $(event.relatedTarget)
+            $(this).find('.modal-body').text('Please confirm delete car: "' + target.data('brand') + '"')
+            document.getElementById('deleteUrl').href = '/car/' + target.data('id') + '/delete';
         })
     </script>
 </body>
