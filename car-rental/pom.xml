@@ -26,6 +26,11 @@
         <module>dao</module>
         <module>test-db</module>
         <module>dao-api</module>
+        <module>service-api</module>
+        <module>service</module>
+        <module>web-app</module>
+        <module>rest-app</module>
+        <!--        <module>rest-app</module>-->
     </modules>
 
     <distributionManagement>
