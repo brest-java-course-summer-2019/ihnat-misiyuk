@@ -28,7 +28,7 @@
         <constructor-arg ref="namedParameterJdbcTemplate"/>
     </bean>
 
-    <bean id="departmentService" class="com.epam.brest.summer.courses2019.service.CarServiceImpl">
+    <bean id="carService" class="com.epam.brest.summer.courses2019.service.CarServiceImpl">
         <constructor-arg ref="carDao"/>
         <constructor-arg ref="carStubDao"/>
     </bean>

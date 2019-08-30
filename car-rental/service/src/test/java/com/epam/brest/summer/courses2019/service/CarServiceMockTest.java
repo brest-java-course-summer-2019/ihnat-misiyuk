@@ -37,6 +37,56 @@ public class CarServiceMockTest {
         Mockito.verifyNoMoreInteractions(dao);
     }
 
+    @Test
+    void findAll() {
+
+        Mockito.when(dao.findAll()).thenReturn(Collections.singletonList(create()));
+
+        List<Car> result = service.findAll();
+
+        assertNotNull(result);
+        assertEquals(1, result.size());
+
+        Mockito.verify(dao).findAll();
+    }
+
+    @Test
+    void findById() {
+
+        int id = 1;
+
+        Mockito.when(dao.findById(id)).thenReturn(Optional.of(create()));
+
+        Car car = service.findById(id);
+
+        assertNotNull(car);
+        assertEquals("brand", car.getCarBrand());
+
+        Mockito.verify(dao).findById(id);
+    }
+
+    @Test
+    void update() {
+
+        service.update(create());
+
+        Mockito.verify(dao).update(carCaptor.capture());
+
+        Car car = carCaptor.getValue();
+        assertNotNull(car);
+        assertEquals("brand", car.getCarBrand());
+    }
+
+    @Test
+    void delete() {
+
+        int id = 3;
+
+        service.delete(id);
+
+        Mockito.verify(dao).delete(id);
+    }
+
     private Car create() {
         Car car = new Car();
         car.setCarBrand("brand");
