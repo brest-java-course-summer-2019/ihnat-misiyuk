@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RentalStub.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Car Rental Model</a> &gt; <a href="index.source.html" class="el_package">com.epam.brest.summer.courses2019.model.stub</a> &gt; <span class="el_source">RentalStub.java</span></div><h1>RentalStub.java</h1><pre class="source lang-java linenums">package com.epam.brest.summer.courses2019.model.stub;
+
+/**
+ * POJO Rental for model.
+ */
+public class RentalStub {
+
+    /**
+     * Rental Id.
+     */
+    private Integer rentalId;
+
+    /**
+     * Rental Days.
+     */
+    private Integer rentalDays;
+
+    /**
+     * Rental Rate.
+     */
+    private String rentalRate;
+
+    /**
+     * Rental Price.
+     */
+    private Integer rentalPrice;
+
+    /**
+     * Car Id.
+     */
+    private Integer carId;
+
+<span class="nc" id="L33">    public RentalStub() {</span>
+<span class="nc" id="L34">    }</span>
+
+<span class="nc" id="L36">    public RentalStub(Integer rentalDays, String rentalRate, Integer rentalPrice, Integer carId) {</span>
+<span class="nc" id="L37">        this.rentalDays = rentalDays;</span>
+<span class="nc" id="L38">        this.rentalRate = rentalRate;</span>
+<span class="nc" id="L39">        this.rentalPrice = rentalPrice;</span>
+<span class="nc" id="L40">        this.carId = carId;</span>
+<span class="nc" id="L41">    }</span>
+
+    /**
+     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this rentalId.
+     *
+     * @return rentalId Rental Id.
+     */
+<span class="nc" id="L48">    public Integer getRentalId() { return rentalId; }</span>
+
+    /**
+     * Sets the rental's id.
+     *
+     * @param rentalId Rental Id.
+     */
+<span class="nc" id="L55">    public void setRentalId(Integer rentalId) { this.rentalId = rentalId; }</span>
+
+    /**
+     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this rentalDays.
+     *
+     * @return rentalDays Rental Days.
+     */
+<span class="nc" id="L62">    public Integer getRentalDays() { return rentalDays; }</span>
+
+    /**
+     * Sets the rental's days.
+     *
+     * @param rentalDays Rental Days.
+     */
+<span class="nc" id="L69">    public void setRentalDays(Integer rentalDays) { this.rentalDays = rentalDays; }</span>
+
+    /**
+     * Returns &lt;code&gt;String&lt;/code&gt; representation of this rentalRate.
+     *
+     * @return rentalRate Rental Rate.
+     */
+<span class="nc" id="L76">    public String getRentalRate() { return rentalRate; }</span>
+
+    /**
+     * Sets the rental's rate.
+     *
+     * @param rentalRate Rental Rate.
+     */
+<span class="nc" id="L83">    public void setRentalRate(String rentalRate) { this.rentalRate = rentalRate; }</span>
+
+    /**
+     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this rentalPrice.
+     *
+     * @return rentalPrice Rental Price.
+     */
+<span class="nc" id="L90">    public Integer getRentalPrice() { return rentalPrice; }</span>
+
+    /**
+     * Sets the rental's price.
+     *
+     * @param rentalPrice Rental Price.
+     */
+<span class="nc" id="L97">    public void setRentalPrice(Integer rentalPrice) { this.rentalPrice = rentalPrice; }</span>
+
+    /**
+     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this carId.
+     *
+     * @return carId Car Id.
+     */
+<span class="nc" id="L104">    public Integer getCarId() { return carId; }</span>
+
+    /**
+     * Sets the car's id.
+     *
+     * @param carId Car Id.
+     */
+<span class="nc" id="L111">    public void setCarId(Integer carId) { this.carId = carId; }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L115">        return &quot;Rental{&quot;</span>
+                + &quot;rentalId=&quot; + rentalId
+                + &quot;,rentalDays=&quot; + rentalDays + '\''
+                + &quot;, rentalRate='&quot; + rentalRate + '\''
+                + &quot;, rentalPrice=&quot; + rentalPrice + '\''
+                + &quot;, carId=&quot; + carId
+                + '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

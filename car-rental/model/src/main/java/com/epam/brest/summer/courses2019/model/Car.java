@@ -54,7 +54,7 @@ public class Car {
 //        this.carClass = carClass;
 //    }
 
-        /**
+    /**
      * Constructor with car brand.
      *
      * @param carBrand car brand

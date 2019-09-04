@@ -11,33 +11,38 @@ public class Rental {
     private Integer rentalId;
 
     /**
-     * Rental Days.
-     */
-    private Integer rentalDays;
-
-    /**
      * Rental Rate.
      */
     private String rentalRate;
 
-    /**
-     * Rental Price.
-     */
-    private Integer rentalPrice;
-
-    /**
-     * Car Id.
-     */
-    private Integer carId;
+//    /**
+//     * Rental Price.
+//     */
+//    private Integer rentalPrice;
+//
+//    /**
+//     * Car Id.
+//     */
+//    private Integer carId;
+//
+//    /**
+//     * Rental Days.
+//     */
+//    private Integer rentalDays;
 
     public Rental() {
     }
 
-    public Rental(Integer rentalDays, String rentalRate, Integer rentalPrice, Integer carId) {
-        this.rentalDays = rentalDays;
+//    public Rental(Integer rentalDays, String rentalRate, Integer rentalPrice, Integer carId) {
+//        this.rentalDays = rentalDays;
+//        this.rentalRate = rentalRate;
+//        this.rentalPrice = rentalPrice;
+//        this.carId = carId;
+//    }
+
+    public Rental(Integer rentalId, String rentalRate) {
+        this.rentalId = rentalId;
         this.rentalRate = rentalRate;
-        this.rentalPrice = rentalPrice;
-        this.carId = carId;
     }
 
     /**
@@ -55,20 +60,6 @@ public class Rental {
     public void setRentalId(Integer rentalId) { this.rentalId = rentalId; }
 
     /**
-     * Returns <code>Integer</code> representation of this rentalDays.
-     *
-     * @return rentalDays Rental Days.
-     */
-    public Integer getRentalDays() { return rentalDays; }
-
-    /**
-     * Sets the rental's days.
-     *
-     * @param rentalDays Rental Days.
-     */
-    public void setRentalDays(Integer rentalDays) { this.rentalDays = rentalDays; }
-
-    /**
      * Returns <code>String</code> representation of this rentalRate.
      *
      * @return rentalRate Rental Rate.
@@ -82,42 +73,53 @@ public class Rental {
      */
     public void setRentalRate(String rentalRate) { this.rentalRate = rentalRate; }
 
-    /**
-     * Returns <code>Integer</code> representation of this rentalPrice.
-     *
-     * @return rentalPrice Rental Price.
-     */
-    public Integer getRentalPrice() { return rentalPrice; }
-
-    /**
-     * Sets the rental's price.
-     *
-     * @param rentalPrice Rental Price.
-     */
-    public void setRentalPrice(Integer rentalPrice) { this.rentalPrice = rentalPrice; }
-
-    /**
-     * Returns <code>Integer</code> representation of this carId.
-     *
-     * @return carId Car Id.
-     */
-    public Integer getCarId() { return carId; }
-
-    /**
-     * Sets the car's id.
-     *
-     * @param carId Car Id.
-     */
-    public void setCarId(Integer carId) { this.carId = carId; }
+//    /**
+//     * Returns <code>Integer</code> representation of this rentalDays.
+//     *
+//     * @return rentalDays Rental Days.
+//     */
+//    public Integer getRentalDays() { return rentalDays; }
+//
+//    /**
+//     * Sets the rental's days.
+//     *
+//     * @param rentalDays Rental Days.
+//     */
+//    public void setRentalDays(Integer rentalDays) { this.rentalDays = rentalDays; }
+//
+//    /**
+//     * Returns <code>Integer</code> representation of this rentalPrice.
+//     *
+//     * @return rentalPrice Rental Price.
+//     */
+//    public Integer getRentalPrice() { return rentalPrice; }
+//
+//    /**
+//     * Sets the rental's price.
+//     *
+//     * @param rentalPrice Rental Price.
+//     */
+//    public void setRentalPrice(Integer rentalPrice) { this.rentalPrice = rentalPrice; }
+//
+//    /**
+//     * Returns <code>Integer</code> representation of this carId.
+//     *
+//     * @return carId Car Id.
+//     */
+//    public Integer getCarId() { return carId; }
+//
+//    /**
+//     * Sets the car's id.
+//     *
+//     * @param carId Car Id.
+//     */
+//    public void setCarId(Integer carId) { this.carId = carId; }
 
     @Override
     public String toString() {
         return "Rental{"
                 + "rentalId=" + rentalId
-                + ",rentalDays=" + rentalDays + '\''
-                + ", rentalRate='" + rentalRate + '\''
-                + ", rentalPrice=" + rentalPrice + '\''
-                + ", carId=" + carId
+                + ", rentalRate='" + rentalRate
                 + '}';
     }
 }

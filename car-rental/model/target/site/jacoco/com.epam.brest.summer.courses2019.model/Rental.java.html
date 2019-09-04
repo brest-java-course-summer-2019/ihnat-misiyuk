@@ -11,113 +11,115 @@ public class Rental {
     private Integer rentalId;
 
     /**
-     * Rental Days.
-     */
-    private Integer rentalDays;
-
-    /**
      * Rental Rate.
      */
     private String rentalRate;
 
-    /**
-     * Rental Price.
-     */
-    private Integer rentalPrice;
-
-    /**
-     * Car Id.
-     */
-    private Integer carId;
+//    /**
+//     * Rental Price.
+//     */
+//    private Integer rentalPrice;
+//
+//    /**
+//     * Car Id.
+//     */
+//    private Integer carId;
+//
+//    /**
+//     * Rental Days.
+//     */
+//    private Integer rentalDays;
 
 <span class="fc" id="L33">    public Rental() {</span>
 <span class="fc" id="L34">    }</span>
 
-<span class="nc" id="L36">    public Rental(Integer rentalDays, String rentalRate, Integer rentalPrice, Integer carId) {</span>
-<span class="nc" id="L37">        this.rentalDays = rentalDays;</span>
-<span class="nc" id="L38">        this.rentalRate = rentalRate;</span>
-<span class="nc" id="L39">        this.rentalPrice = rentalPrice;</span>
-<span class="nc" id="L40">        this.carId = carId;</span>
-<span class="nc" id="L41">    }</span>
+//    public Rental(Integer rentalDays, String rentalRate, Integer rentalPrice, Integer carId) {
+//        this.rentalDays = rentalDays;
+//        this.rentalRate = rentalRate;
+//        this.rentalPrice = rentalPrice;
+//        this.carId = carId;
+//    }
+
+<span class="nc" id="L43">    public Rental(Integer rentalId, String rentalRate) {</span>
+<span class="nc" id="L44">        this.rentalId = rentalId;</span>
+<span class="nc" id="L45">        this.rentalRate = rentalRate;</span>
+<span class="nc" id="L46">    }</span>
 
     /**
      * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this rentalId.
      *
      * @return rentalId Rental Id.
      */
-<span class="fc" id="L48">    public Integer getRentalId() { return rentalId; }</span>
+<span class="fc" id="L53">    public Integer getRentalId() { return rentalId; }</span>
 
     /**
      * Sets the rental's id.
      *
      * @param rentalId Rental Id.
      */
-<span class="fc" id="L55">    public void setRentalId(Integer rentalId) { this.rentalId = rentalId; }</span>
-
-    /**
-     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this rentalDays.
-     *
-     * @return rentalDays Rental Days.
-     */
-<span class="fc" id="L62">    public Integer getRentalDays() { return rentalDays; }</span>
-
-    /**
-     * Sets the rental's days.
-     *
-     * @param rentalDays Rental Days.
-     */
-<span class="fc" id="L69">    public void setRentalDays(Integer rentalDays) { this.rentalDays = rentalDays; }</span>
+<span class="fc" id="L60">    public void setRentalId(Integer rentalId) { this.rentalId = rentalId; }</span>
 
     /**
      * Returns &lt;code&gt;String&lt;/code&gt; representation of this rentalRate.
      *
      * @return rentalRate Rental Rate.
      */
-<span class="fc" id="L76">    public String getRentalRate() { return rentalRate; }</span>
+<span class="fc" id="L67">    public String getRentalRate() { return rentalRate; }</span>
 
     /**
      * Sets the rental's rate.
      *
      * @param rentalRate Rental Rate.
      */
-<span class="fc" id="L83">    public void setRentalRate(String rentalRate) { this.rentalRate = rentalRate; }</span>
+<span class="fc" id="L74">    public void setRentalRate(String rentalRate) { this.rentalRate = rentalRate; }</span>
 
-    /**
-     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this rentalPrice.
-     *
-     * @return rentalPrice Rental Price.
-     */
-<span class="fc" id="L90">    public Integer getRentalPrice() { return rentalPrice; }</span>
-
-    /**
-     * Sets the rental's price.
-     *
-     * @param rentalPrice Rental Price.
-     */
-<span class="fc" id="L97">    public void setRentalPrice(Integer rentalPrice) { this.rentalPrice = rentalPrice; }</span>
-
-    /**
-     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this carId.
-     *
-     * @return carId Car Id.
-     */
-<span class="fc" id="L104">    public Integer getCarId() { return carId; }</span>
-
-    /**
-     * Sets the car's id.
-     *
-     * @param carId Car Id.
-     */
-<span class="fc" id="L111">    public void setCarId(Integer carId) { this.carId = carId; }</span>
+//    /**
+//     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this rentalDays.
+//     *
+//     * @return rentalDays Rental Days.
+//     */
+//    public Integer getRentalDays() { return rentalDays; }
+//
+//    /**
+//     * Sets the rental's days.
+//     *
+//     * @param rentalDays Rental Days.
+//     */
+//    public void setRentalDays(Integer rentalDays) { this.rentalDays = rentalDays; }
+//
+//    /**
+//     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this rentalPrice.
+//     *
+//     * @return rentalPrice Rental Price.
+//     */
+//    public Integer getRentalPrice() { return rentalPrice; }
+//
+//    /**
+//     * Sets the rental's price.
+//     *
+//     * @param rentalPrice Rental Price.
+//     */
+//    public void setRentalPrice(Integer rentalPrice) { this.rentalPrice = rentalPrice; }
+//
+//    /**
+//     * Returns &lt;code&gt;Integer&lt;/code&gt; representation of this carId.
+//     *
+//     * @return carId Car Id.
+//     */
+//    public Integer getCarId() { return carId; }
+//
+//    /**
+//     * Sets the car's id.
+//     *
+//     * @param carId Car Id.
+//     */
+//    public void setCarId(Integer carId) { this.carId = carId; }
 
     @Override
     public String toString() {
-<span class="nc" id="L115">        return &quot;Rental{&quot;</span>
+<span class="nc" id="L120">        return &quot;Rental{&quot;</span>
                 + &quot;rentalId=&quot; + rentalId
-                + &quot;,rentalDays=&quot; + rentalDays + '\''
-                + &quot;, rentalRate='&quot; + rentalRate + '\''
-                + &quot;, rentalPrice=&quot; + rentalPrice + '\''
-                + &quot;, carId=&quot; + carId
+                + &quot;, rentalRate='&quot; + rentalRate
                 + '}';
     }
 }
