@@ -16,8 +16,11 @@ public class CarStubDaoJdbcImpl implements CarStubDao {
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    @Value("${carStub.findAllWithRequestedGearbox}")
-    private String findAllWithRequestedGearbox;
+//    @Value("${carStub.findAllWithRequestedGearbox}")
+//    private String findAllWithRequestedGearbox;
+
+    private final static String SELECT_ALL_WITH_REQ_GEARBOX =
+            "select car_id, car_brand, car_year, car_engine, car_gearbox, car_class from car where car_gearbox = :carGearbox";
 
     public CarStubDaoJdbcImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
@@ -25,7 +28,7 @@ public class CarStubDaoJdbcImpl implements CarStubDao {
 
     @Override
     public List<CarStub> findAllWithRequestedGearbox() {
-        List<CarStub> cars = namedParameterJdbcTemplate.query(findAllWithRequestedGearbox,
+        List<CarStub> cars = namedParameterJdbcTemplate.query(SELECT_ALL_WITH_REQ_GEARBOX,
                 BeanPropertyRowMapper.newInstance(CarStub.class));
         return cars;
     }

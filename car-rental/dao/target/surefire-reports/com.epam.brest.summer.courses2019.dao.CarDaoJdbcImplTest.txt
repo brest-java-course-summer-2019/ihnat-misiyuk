@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: com.epam.brest.summer.courses2019.dao.CarDaoJdbcImplTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.941 s <<< FAILURE! - in com.epam.brest.summer.courses2019.dao.CarDaoJdbcImplTest
+updateCar  Time elapsed: 0.04 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessApiUsageException: No value supplied for the SQL parameter 'carId': No value registered for key 'carId'
+	at com.epam.brest.summer.courses2019.dao.CarDaoJdbcImplTest.updateCar(CarDaoJdbcImplTest.java:68)
+
+addCar  Time elapsed: 0.006 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessApiUsageException: No value supplied for the SQL parameter 'carId': No value registered for key 'carId'
+	at com.epam.brest.summer.courses2019.dao.CarDaoJdbcImplTest.addCar(CarDaoJdbcImplTest.java:60)
+
+deleteCar  Time elapsed: 0.006 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessApiUsageException: No value supplied for the SQL parameter 'carId': No value registered for key 'carId'
+	at com.epam.brest.summer.courses2019.dao.CarDaoJdbcImplTest.deleteCar(CarDaoJdbcImplTest.java:79)
+
+findAllWithRequestedGearbox  Time elapsed: 0.028 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessApiUsageException: No value supplied for the SQL parameter 'carGearbox': This SqlParameterSource is empty
+	at com.epam.brest.summer.courses2019.dao.CarDaoJdbcImplTest.findAllWithRequestedGearbox(CarDaoJdbcImplTest.java:42)
+

@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.epam.brest.summer.courses2019.dao.RentalDaoJdbcImplTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.043 s <<< FAILURE! - in com.epam.brest.summer.courses2019.dao.RentalDaoJdbcImplTest
+delete  Time elapsed: 0.001 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessApiUsageException: No value supplied for the SQL parameter 'rentalId': No value registered for key 'rentalId'
+	at com.epam.brest.summer.courses2019.dao.RentalDaoJdbcImplTest.delete(RentalDaoJdbcImplTest.java:74)
+
+update  Time elapsed: 0.01 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessApiUsageException: No value supplied for the SQL parameter 'rentalDays': Invalid property 'rentalDays' of bean class [com.epam.brest.summer.courses2019.model.Rental]: Bean property 'rentalDays' is not readable or has an invalid getter method: Does the return type of the getter match the parameter type of the setter?
+	at com.epam.brest.summer.courses2019.dao.RentalDaoJdbcImplTest.update(RentalDaoJdbcImplTest.java:64)
+
+add  Time elapsed: 0.006 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessApiUsageException: No value supplied for the SQL parameter 'rentalId': No value registered for key 'rentalId'
+	at com.epam.brest.summer.courses2019.dao.RentalDaoJdbcImplTest.add(RentalDaoJdbcImplTest.java:53)
+

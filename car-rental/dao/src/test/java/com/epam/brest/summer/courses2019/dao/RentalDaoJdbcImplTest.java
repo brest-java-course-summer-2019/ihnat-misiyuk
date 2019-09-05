@@ -15,7 +15,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:test-db.xml", "classpath*:../resources/test-dao.xml"})
+@ContextConfiguration(locations = {"classpath*:test-db.xml", "classpath*:test-dao.xml"})
 @Transactional
 @Rollback
 public class RentalDaoJdbcImplTest {
@@ -42,21 +42,18 @@ public class RentalDaoJdbcImplTest {
         assertNotNull(rentalDao);
         Rental rental = rentalDao.findById(1).get();
         assertTrue(rental.getRentalId().equals(1));
-        assertTrue(rental.getRentalDays().equals(3));
         assertTrue(rental.getRentalRate().equals("DAILY"));
-        assertTrue(rental.getRentalPrice().equals(50));
     }
 
     @Test
     public void add() {
         List<Rental> rentals = rentalDao.findAll();
         int sizeBefore = rentals.size();
-        Rental rental = new Rental(5, "NEW", 40, 1);
+        Rental rental = new Rental("NEW", 1);
         Rental newRental = rentalDao.add(rental);
         assertNotNull(newRental.getRentalId());
-        assertTrue(newRental.getRentalDays().equals(rental.getRentalDays()));
         assertTrue(newRental.getRentalRate().equals(rental.getRentalRate()));
-        assertTrue(newRental.getRentalPrice().equals(rental.getRentalPrice()));
+        assertTrue(newRental.getCarId().equals(rental.getCarId()));
         assertTrue((sizeBefore + 1) == rentalDao.findAll().size());
     }
 
@@ -64,18 +61,16 @@ public class RentalDaoJdbcImplTest {
     public void update() {
         Rental rental = rentalDao.findById(1).get();
         rental.setRentalRate("MAIN");
-        rental.setRentalDays(4);
-        rental.setRentalPrice(60);
         rentalDao.update(rental);
         Rental updatedRental = rentalDao.findById(rental.getRentalId()).get();
         assertTrue(updatedRental.getRentalId().equals(rental.getRentalId()));
         assertTrue(updatedRental.getRentalRate().equals(rental.getRentalRate()));
-        assertTrue(updatedRental.getRentalPrice().equals(rental.getRentalPrice()));
     }
 
     @Test
     public void delete() {
-        Rental rental = new Rental(7, "MAIN", 90, 1);
+        Rental rental = new Rental("MAIN", 1);
+        rental.setRentalId(10);
         rentalDao.add(rental);
         List<Rental> rentals = rentalDao.findAll();
         int sizeBefore = rentals.size();

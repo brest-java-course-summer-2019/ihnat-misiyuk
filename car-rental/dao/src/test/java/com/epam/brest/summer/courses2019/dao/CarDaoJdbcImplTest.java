@@ -15,7 +15,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:test-db.xml", "classpath*:../resources/test-dao.xml"})
+@ContextConfiguration(locations = {"classpath*:test-db.xml", "classpath*:test-dao.xml"})
 @Transactional
 @Rollback
 public class CarDaoJdbcImplTest {
@@ -56,7 +56,7 @@ public class CarDaoJdbcImplTest {
     public void addCar() {
         Car testCar = new Car();
         testCar.setCarBrand("NISSAN");
-//        Нужно ли добавлять остальные поля?
+        testCar.setCarId(4);
         Car newCar = carDao.add(testCar);
         assertNotNull(newCar.getCarId());
     }

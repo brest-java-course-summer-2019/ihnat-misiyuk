@@ -1,7 +1,6 @@
 package com.epam.brest.summer.courses2019.dao;
 
 import com.epam.brest.summer.courses2019.model.Car;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -22,24 +21,45 @@ import java.util.Optional;
 /**
  *  Car DAO Interface implementation.
  */
+@Component
 public class CarDaoJdbcImpl implements CarDao{
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    @Value("${car.findAll}")
-    private String findAllSql;
+    private final static String SELECT_ALL =
+            "select d.car_brand, d.car_id from car d order by 2";
 
-    @Value("${car.findById}")
-    private String findByIdSql;
+    private static final String FIND_BY_ID =
+            "select car_id, car_brand from car where car_id = :carId";
 
-    @Value("${car.insert}")
-    private String insertSql;
+//    private final static String ADD_CAR =
+//            "insert into car (car_id, car_brand, car_year, car_engine, car_gearbox, car_class) " +
+//                    "values (:carId, :carBrand, :carYear, :carEngine, :carGearbox, :carClass)";
 
-    @Value("${car.update}")
-    private String updateSql;
+    private final static String ADD_CAR =
+            "insert into car (car_id, car_brand) values (:carId, :carBrand)";
 
-    @Value("${car.delete}")
-    private String deleteSql;
+
+    private static final String UPDATE =
+        "update car set car_brand = :carBrand where car_id = :carId";
+
+    private static final String DELETE =
+            "delete from car where car_id = :carId";
+
+//    @Value("${car.findAll}")
+//    private String findAllSql;
+//
+//    @Value("${car.findById}")
+//    private String findByIdSql;
+//
+//    @Value("${car.insert}")
+//    private String insertSql;
+//
+//    @Value("${car.update}")
+//    private String updateSql;
+//
+//    @Value("${car.delete}")
+//    private String deleteSql;
 
     private static final String CAR_ID = "carId";
 
@@ -53,14 +73,14 @@ public class CarDaoJdbcImpl implements CarDao{
         parameters.addValue("carBrand", car.getCarBrand());
 
         KeyHolder generatedKeyHolder = new GeneratedKeyHolder();
-        namedParameterJdbcTemplate.update(insertSql, parameters, generatedKeyHolder);
+        namedParameterJdbcTemplate.update(ADD_CAR, parameters, generatedKeyHolder);
         car.setCarId(generatedKeyHolder.getKey().intValue());
         return car;
     }
 
     @Override
     public void update(Car car) {
-        if (namedParameterJdbcTemplate.update(updateSql, new BeanPropertySqlParameterSource(car)) < 1) {
+        if (namedParameterJdbcTemplate.update(UPDATE, new BeanPropertySqlParameterSource(car)) < 1) {
             throw new EmptyResultDataAccessException(
                     String.format("Failed to update. '%s' not found in the DB", car), 1);
         }
@@ -74,21 +94,21 @@ public class CarDaoJdbcImpl implements CarDao{
     public void delete(Integer carId) {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
         mapSqlParameterSource.addValue(CAR_ID, carId);
-        Optional.of(namedParameterJdbcTemplate.update(deleteSql, mapSqlParameterSource))
+        Optional.of(namedParameterJdbcTemplate.update(DELETE, mapSqlParameterSource))
                 .filter(this::successfullyUpdated)
                 .orElseThrow(() -> new RuntimeException("Failed to delete car from DB"));
     }
 
     @Override
     public List<Car> findAll() {
-        List<Car> cars = namedParameterJdbcTemplate.query(findAllSql, new CarRowMapper());
+        List<Car> cars = namedParameterJdbcTemplate.query(SELECT_ALL, new CarRowMapper());
         return cars;
     }
 
     @Override
     public Optional<Car> findById(Integer carId) {
         SqlParameterSource namedParameters = new MapSqlParameterSource(CAR_ID, carId);
-        List<Car> results = namedParameterJdbcTemplate.query(findByIdSql, namedParameters,
+        List<Car> results = namedParameterJdbcTemplate.query(FIND_BY_ID, namedParameters,
                 BeanPropertyRowMapper.newInstance(Car.class));
         return Optional.ofNullable(DataAccessUtils.uniqueResult(results));
     }
